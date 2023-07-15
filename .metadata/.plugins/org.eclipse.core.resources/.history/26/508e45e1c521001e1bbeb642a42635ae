@@ -1,0 +1,50 @@
+package primeiroDesafio;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
+
+public class Aplicacao {
+
+	public static void main(String[] args) {
+		int[] numeros = new int[10];
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Digite 10 valores inteiros positivos:");
+
+        for (int i = 0; i < 10; i++) {
+            numeros[i] = scanner.nextInt();
+        }
+
+        // Separar pares e ímpares
+        Integer[] pares = Arrays.stream(numeros)
+                .filter(n -> n % 2 == 0)
+                .boxed()
+                .toArray(Integer[]::new);
+
+        Integer[] impares = Arrays.stream(numeros)
+                .filter(n -> n % 2 != 0)
+                .boxed()
+                .toArray(Integer[]::new);
+
+        // Ordenar pares em ordem crescente
+        Arrays.sort(pares);
+
+        // Ordenar ímpares em ordem decrescente
+        List<Integer> imparesList = Arrays.asList(impares);
+        Collections.sort(imparesList, Collections.reverseOrder());
+        impares = imparesList.toArray(new Integer[0]);
+
+        System.out.println("Pares em ordem crescente:");
+        for (int par : pares) {
+            System.out.print(par + " ");
+        }
+
+        System.out.println("\nÍmpares em ordem decrescente:");
+        for (int impar : impares) {
+            System.out.print(impar + " ");
+        }
+	}
+
+}
