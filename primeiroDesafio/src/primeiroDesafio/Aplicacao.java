@@ -52,6 +52,8 @@ public class Aplicacao {
         for (int impar : impares) {
             System.out.println(impar);
         }
+        
+        scanner.close();
 
 	}
 
